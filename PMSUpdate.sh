@@ -32,7 +32,7 @@
 # ------------------------------------------------------------------------- #
 # --                            Do You Sudo?                             -- #
 # ------------------------------------------------------------------------- #
-# -- Make sure script is being run as sudo
+# -- Make sure script is being run with privileges
 if [[ $UID != 0 ]]; then
     echo "This script uses apt and dpkg and must be run in sudo!"
     echo "Use 'sudo $0 $*' then enter your password when prompted."
@@ -42,19 +42,20 @@ fi
 # --               Get Required packages for script to run               -- #
 # ------------------------------------------------------------------------- #
 # -- Combined from a few scripts from the MSP installer for sharing with the plex forums.
-# -- Checks status and installs from default repositories if needed.
+# -- Checks status and installs from default dependancies if needed.
 pkgs=(
 
 lynx
-wget
-awk
+dpkg
+avahi-daemon
+avahi-utils
 
 )
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' the.package.name|grep "install ok installed")
-for pkg in $pkgs
+for pkg in "${pkgs[@]}"
 do
-echo ":: Checking for $pkg: $PKG_OK"
-if [ $pkg == "$PKG_OK" ]; then
+PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $pkg |grep "install ok installed")
+echo ":: Checking for $pkg"
+if [ "$PKG_OK" == "" ]; then
   echo ":: Missing $pkg! Let's get that fixed!."
 	apt-get --force-yes --yes install $pkg
 fi
@@ -65,7 +66,6 @@ echo ":: Moving on..."
 # --                        Get URL's from Plex.TV                       -- #
 # ------------------------------------------------------------------------- #
 # -- Let's Get the most recent public release download URL's 
-MyCnt="64" # Look for the 64 bit deb file first
 echo ":: Grabbing links to .deb packages from http://www.plex.tv/downloads"
 debs=$(lynx -dump http://www.plex.tv/downloads  | grep 'http://' | awk '/deb/{print $2}')
 echo ":: Searching for .deb packages"
@@ -78,15 +78,9 @@ then
    sixforbit="$i"
    elif [[ $i == *i386* ]] # 32 bit download 
    then
-   echo ":: Seriously a 32 bit install?..." 
-   sleep 2
-   echo ":: Oh Well moving on..." # Seriously though what is wrong with you
    thirtoobit="$i"
-   else
-   echo ":: How the Fuck did this get displayed?" # Don't ask... I was drinking... Shit Happened...
    fi
    echo $i
-   MyCnt="32" # For people trying to run their media server from a toaster...
 fi
 echo $i
 done
