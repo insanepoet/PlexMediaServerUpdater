@@ -14,12 +14,17 @@ How to use this
 From the cli (in terminal for gui peeps) type the following to download then run this script:
 
 This will download the bash script from github
+```
     wget https://raw.githubusercontent.com/insanepoet/PlexMediaServerUpdater/master/PMSUpdate.sh
+```
 Then we make it executable
+```
     sudo chmod +x PMSUpdate.sh
+```
 Lastly we run
-    sudo ./PMSUpdate.sh
-
+```
+sudo ./PMSUpdate.sh
+```
 The script will detect your OS Type and install the appropriate PlexMediaServer
 
 You could clone the repo, set the script to execute, and run it however if you understand that why are you even reading this :)
