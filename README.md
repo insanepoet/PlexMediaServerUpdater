@@ -13,17 +13,16 @@ How to use this
 ===============
 From the cli (in terminal for gui peeps) type the following to download then run this script:
 ...
+# -- This will grab the script from github
 wget https://raw.githubusercontent.com/insanepoet/PlexMediaServerUpdater/master/PMSUpdate.sh
-...
-This will grab the script from github..
-...
+
+# -- Make it executable
 sudo chmod +x PMSUpdate.sh
-...
-Make it executable.
-...
+
+# -- Run the script & Profit
 sudo ./PMSUpdate.sh
 ...
-Finally this will run the script and do everything described above.
+
 
 You could clone the repo, set the script to execute, and run it however if you understand that why are you even reading this :)
 
