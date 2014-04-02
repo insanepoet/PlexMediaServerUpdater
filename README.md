@@ -15,15 +15,15 @@ From the cli (in terminal for gui peeps) type the following to download then run
 
 This will download the bash script from github
 ```
-    wget https://raw.githubusercontent.com/insanepoet/PlexMediaServerUpdater/master/PMSUpdate.sh
+  wget https://raw.githubusercontent.com/insanepoet/PlexMediaServerUpdater/master/PMSUpdate.sh
 ```
 Then we make it executable
 ```
-    sudo chmod +x PMSUpdate.sh
+  sudo chmod +x PMSUpdate.sh
 ```
 Lastly we run
 ```
-sudo ./PMSUpdate.sh
+  sudo ./PMSUpdate.sh
 ```
 The script will detect your OS Type and install the appropriate PlexMediaServer
 
