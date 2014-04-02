@@ -12,15 +12,14 @@ By searching for links containing the keyword "deb", excluding the link for the 
 How to use this
 ===============
 From the cli (in terminal for gui peeps) type the following to download then run this script:
-...
 
-wget https://raw.githubusercontent.com/insanepoet/PlexMediaServerUpdater/master/PMSUpdate.sh
-
-sudo chmod +x PMSUpdate.sh
-
-sudo ./PMSUpdate.sh
-...
-
+This will download the bash script from github
+'''wget https://raw.githubusercontent.com/insanepoet/PlexMediaServerUpdater/master/PMSUpdate.sh'''
+Then we make it executable
+'''sudo chmod +x PMSUpdate.sh'''
+Lastly we run
+'''sudo ./PMSUpdate.sh'''
+Profit!?!
 
 You could clone the repo, set the script to execute, and run it however if you understand that why are you even reading this :)
 
